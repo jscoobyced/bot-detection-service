@@ -2,7 +2,7 @@
 
 ![Code Coverage](images/coverage.svg)
 
-This is a BOT detection and classification platform. At this stage it is very simple, but supports extensions to make it more an more robust.
+This is a BOT detection and classification platform. At this stage it is very simple, but supports extensions to make it more and more robust.
 
 ## Getting started
 
