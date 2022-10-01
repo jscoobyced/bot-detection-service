@@ -8,9 +8,14 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import net.rochefolle.plugins.RoutingConfig
 
+object DeviceInformationRouteConfig {
+    private const val route: String = "deviceInformation"
+    const val path: String = "${RoutingConfig.version}/${route}"
+}
 fun Route.deviceInformationRouting() {
-    route("/deviceInformation") {
+    route(DeviceInformationRouteConfig.path) {
         post {
             val deviceInformation = call.receive<DeviceInformation>()
             deviceInformationStorage.add(deviceInformation)

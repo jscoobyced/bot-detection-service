@@ -24,7 +24,7 @@ class DeviceInformationRouteTest {
         }
         val deviceInformation = defaultDeviceInformation()
 
-        val response = httpClient.post("/deviceInformation") {
+        val response = httpClient.post(DeviceInformationRouteConfig.path) {
             contentType(ContentType.Application.Json)
             setBody(deviceInformation)
         }
@@ -55,7 +55,7 @@ class DeviceInformationRouteTest {
 
         val deviceInformation = minimalDeviceInformation()
 
-        val response = httpClient.post("/deviceInformation") {
+        val response = httpClient.post(DeviceInformationRouteConfig.path) {
             setBody(deviceInformation)
             headers["Content-Type"] = "application/json"
         }

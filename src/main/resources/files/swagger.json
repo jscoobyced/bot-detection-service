@@ -1,0 +1,127 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a BOT Detection Service that identifies the parameters submitted and classifies the request.",
+    "version": "0.0.1",
+    "title": "BOT Detection Service",
+    "contact": {
+      "email": "19742131+jscoobyced@users.noreply.github.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "DeviceInformation",
+      "description": "The details about a device",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://github.com/jscoobyced/bot-detection-service"
+      }
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/deviceInformation": {
+      "post": {
+        "tags": [
+          "DeviceInformation"
+        ],
+        "summary": "Submit a DeviceInformation",
+        "description": "Submit a DeviceInformation so the service can compute the device signature and type",
+        "operationId": "deviceInformation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The device information data.",
+            "schema": {
+              "$ref": "#/definitions/DeviceInformation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/DeviceInformation"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DeviceInformation": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "whiteListedCookies": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "deviceSignature": {
+          "$ref": "#/definitions/DeviceSignature"
+        },
+        "deviceType": {
+          "$ref": "#/definitions/DeviceType"
+        }
+      }
+    },
+    "DeviceSignature": {
+      "type": "object",
+      "properties": {
+        "signature": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DeviceType": {
+      "type": "object",
+      "properties": {
+        "isBot": {
+          "type": "boolean"
+        },
+        "isHuman": {
+          "type": "boolean"
+        },
+        "isKnownBot": {
+          "type": "boolean"
+        },
+        "isBadBot": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
