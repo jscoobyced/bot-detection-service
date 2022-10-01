@@ -17,7 +17,7 @@ percent_line_str = "{:.{}f}%".format(percent_line, 1)
 print("Coverage: %s" % percent_line_str)
 thresholds = {80: 'red',
               85: 'yellow',
-              95: 'green'}
+              100: 'green'}
 
 badge = anybadge.Badge('coverage', percent_line_str, thresholds=thresholds)
 
